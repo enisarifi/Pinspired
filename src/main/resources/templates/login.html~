@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinspire Landing Page</title>
+    <link rel="stylesheet" href="/styles/login_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">🌿 Pinspire</div>
+        <ul class="nav-links">
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">Watch</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="login-btn">Log In</button>
+            <button class="signup-btn">Sign up</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="content-wrapper">
+        <section class="promo-section">
+            <h1>No Account?</h1>
+            <p>Sign Up To Get Inspiration</p>
+        </section>
+
+        <section class="signup-form-section">
+            <div class="signup-card">
+                <h2>Welcome To Pinspire</h2>
+                <p>Find new ideas to share</p>
+
+                <form>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+
+                    <label for="birthdate">Birthdate</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+
+                    <button type="submit" class="continue-btn">Continue</button>
+                    <p>Or</p>
+                    <button type="button" class="google-btn">
+                        Continue with Google <span>🔍</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+</body>
+</html>
