@@ -1,4 +1,4 @@
-package com.example.pinspired.entities;
+package dev.naimsulejmani.gr1facebook.entities;
 
 
 import jakarta.persistence.*;
