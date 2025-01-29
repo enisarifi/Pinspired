@@ -23,11 +23,13 @@ public class UserDataInitializer implements Runnable {
             UserEntity user1 = new UserEntity();
             user1.setName("John");
             user1.setSurname("Doe");
+            user1.setUsername("rainman");
             user1.setEmail("john.doe@example.com");
             user1.setLocation("New York");
-            user1.setBirthday("1990-01-01");
+            user1.setBirthdate("1990-01-01");
             user1.setBio("TEST");
             user1.setGender("M");
+            user1.setActive(true);
             user1.setPassword("123123123"); //password.encode("123123123")
             user1.setWebsite("https://example.com");
             user1.setProfilePicture("https://example.com/profile.jpg");

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDto {
     private String id;
+    private String username;
     private String name;
     private String surname;
     private String email;
@@ -18,7 +19,8 @@ public class UserDto {
     private String bio;
     private String location;
     private String website;
-    private String birthday;
+    private String birthdate;
+    private boolean active;
     private String gender;
 
 }

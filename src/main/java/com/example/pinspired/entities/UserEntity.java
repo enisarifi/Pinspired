@@ -20,18 +20,31 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false, unique = true, length = 50)
+    private String username;
+
+    @Column(nullable = false, length = 100)
+    private String password;
+
     @Column(nullable = false, length = 50)
     private String name;
+
+    @Column(nullable = false, length = 50)
     private String surname;
+
+    @Column(nullable = false, length = 50, unique = true)
     private String email;
-    private String password;
+
     private String profilePicture;
     private String coverPicture;
     private String bio;
     private String location;
     private String website;
-    private String birthday;
+    private String birthdate;
     private String gender;
+
+    @Column(nullable = false)
+    private boolean active;
 
     @OneToMany(mappedBy = "userEntity")
     private List<PostEntity> postEntities;
