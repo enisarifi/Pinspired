@@ -1,0 +1,39 @@
+<section class="images-section">
+    <div class="images-container">
+        <!-- Loop through all posts and display them -->
+        <div th:each="post : ${posts}" class="img-container">
+            <div class="inner-img-container">
+                <!-- Dynamically set the image URL -->
+                <img th:src="@{${post.imageUrl}}" class="posted-img" width="300px" alt="">
+
+                <div class="image-overlay" style="display: none;">
+                    <div class="save-options">
+                        <p class="boards-options">Boards</p>
+                        <button class="save-img-btn">Save</button>
+                    </div>
+
+                    <div class="download-share-options">
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                            <path d="..."/>
+                        </svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                            <path d="..."/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="created-from">
+                <div class="created-from-info">
+                    <div class="created-from-pfp-container">
+                        <!-- Placeholder for profile image, you can modify it accordingly -->
+                        <img th:src="@{${post.profileImage}}" class="created-from-pfp" alt="Profile">
+                        <div class="created-from-pfp-overlay"></div>
+                    </div>
+                    <!-- Display content and username, assuming you have this in the PostDto -->
+                    <p th:text="${post.username}" class="created-from-username">Username</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

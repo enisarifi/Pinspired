@@ -18,6 +18,8 @@ public class SimpleSessionCookieFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         //skip the filter for static resources
+//        if (request.getRequestURI().startsWith("/assets") || request.getRequestURI().startsWith("/static") || request.getRequestURI().startsWith("/templates")) {
+
         if (request.getRequestURI().startsWith("/assets")) {
             filterChain.doFilter(request, response);
             return;
@@ -34,7 +36,7 @@ public class SimpleSessionCookieFilter extends OncePerRequestFilter {
         }
 
         if (request.getRequestURI().startsWith("/login") || request.getRequestURI().startsWith("/register")) {
-            response.sendRedirect("/");
+            response.sendRedirect("/posts");
             return;
         }
 

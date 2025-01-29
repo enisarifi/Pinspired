@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,10 +26,13 @@ public class PostEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;
 
-    @NotBlank(message = "Content is required")
-    @Size(max = 50_000, message = "Content must be at most 50,000 characters")
+    @Size(max = 150, message = "Title must not exceed 150 characters")
+    private String title;
+
+    @NotBlank(message = "Description is required")
+    @Size(max = 50_000, message = "CDescription must be at most 50,000 characters")
     @Column(nullable = false, length = 50_000)
-    private String content;
+    private String description;
 
     @Size(max = 500, message = "Image URL must be at most 500 characters")
     @Column(length = 500)
@@ -37,7 +42,9 @@ public class PostEntity {
     @Column(length = 500)
     private String videoUrl;
 
-    private boolean accessible = true; // Default value for new posts
+    private String topic;
+
+    private boolean accessible = true;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -48,7 +55,6 @@ public class PostEntity {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
     }
-
     @PreUpdate
     protected void onUpdate() {
         modifiedAt = LocalDateTime.now();

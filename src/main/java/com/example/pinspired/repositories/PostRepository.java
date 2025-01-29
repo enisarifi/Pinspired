@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostRepository extends JpaRepository<PostEntity, Long> {
 //    List<PostEntity> findAllByDeleted(boolean deleted);
-//
+//      List<Matches> findAll()
 //    //    PostEntity findByIdAndDeleted(long id, boolean deleted);
 //    Optional<PostEntity> findByIdAndDeleted(long id, boolean deleted);
 }

@@ -1,0 +1,44 @@
+
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Pinspire VSCode</title>
+
+            <link th:if="${pageName == 'explore' || pageName == 'create-post'} " rel="stylesheet" href="/styles/explore.css">
+
+            <link th:if="${pageName == 'create-post'}" rel="stylesheet" href="/styles/create-post.css">
+            <link th:if="${pageName == 'create-post'}" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+        </head>
+        <body>
+
+        <div class="errything-container">
+            <header>
+                <th:block th:insert="~{/shared/navbar.html}"></th:block>
+
+                <div th:if="${pageName == 'explore'}" class="topics-container">
+                    <div class="topics-inner-container">
+                        <p class="topic">Universe</p>
+                        <p class="topic">Space</p>
+                        <p class="topic">Retro Futurism</p>
+                        <p class="topic">Arcane</p>
+                        <p class="topic">Quotes</p>
+                        <p class="topic">Sky</p>
+                        <p class="topic">Wallpapers</p>
+                        <p class="topic">Video Games</p>
+                        <p class="topic">Planets</p>
+                        <p class="topic">Ghost of tsushima</p>
+                        <p class="topic">Elden Ring</p>
+                        <p class="topic">Studio Ghibli</p>
+                        <p class="topic">Studio Ghibli</p>
+                        <p class="topic">Studio Ghibli</p>
+                        <span th:text="${pageName}"></span>
+
+                    </div>
+                </div>
+
+            </header>

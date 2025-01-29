@@ -32,7 +32,7 @@ public class UserDataInitializer{
             user1.setBio("TEST");
             user1.setGender("M");
             user1.setActive(true);
-            user1.setPassword(passwordEncoder.encode("123123123")); // Hashed password
+            user1.setPassword(passwordEncoder.encode("YlliBerisha2005")); // Hashed password
             user1.setWebsite("https://example.com");
             user1.setProfilePicture("https://example.com/profile.jpg");
             userRepository.save(user1);

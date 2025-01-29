@@ -1,8 +1,11 @@
 package com.example.pinspired.services.impls;
 
 import com.example.pinspired.dtos.PostDto;
+import com.example.pinspired.entities.PostEntity;
+import com.example.pinspired.entities.UserEntity;
 import com.example.pinspired.mappers.PostMapper;
 import com.example.pinspired.repositories.PostRepository;
+import com.example.pinspired.repositories.UserRepository;
 import com.example.pinspired.services.PostService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
     private final PostRepository repository;
+    private final UserRepository userRepository;
     private final PostMapper mapper;
 
 
@@ -81,4 +85,28 @@ public class PostServiceImpl implements PostService {
 
         repository.deleteById(id);
     }
+
+    @Override
+    public void create(PostDto postDto) {
+        // Ensure user exists
+        if (postDto.getUserId() <= 0) {
+            throw new IllegalArgumentException("Invalid userId");
+        }
+
+        UserEntity user = userRepository.findById(postDto.getUserId()).orElseThrow(() ->
+                new EntityNotFoundException("User with id " + postDto.getUserId() + " not found"));
+
+        // Create new post entity
+        PostEntity post = new PostEntity();
+        post.setTitle(postDto.getTitle());
+        post.setDescription(postDto.getDescription());
+        post.setImageUrl(postDto.getImageUrl());
+        post.setVideoUrl(postDto.getVideoUrl());
+        post.setTopic(postDto.getTopic());
+        post.setUserEntity(user);
+
+        // Save post to repository
+        repository.save(post);
+    }
+
 }
