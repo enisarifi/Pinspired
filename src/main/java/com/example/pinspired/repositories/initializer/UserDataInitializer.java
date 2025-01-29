@@ -1,24 +1,26 @@
 package com.example.pinspired.repositories.initializer;
 
-
 import com.example.pinspired.entities.UserEntity;
 import com.example.pinspired.repositories.UserRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserDataInitializer implements Runnable {
+public class UserDataInitializer{
 
     private final UserRepository userRepository;
-    // password encoder
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserDataInitializer(UserRepository userRepository) {
+    public UserDataInitializer(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
-    public void run() {
+    @PostConstruct
+    public void initialize() {
         if (userRepository.count() == 0) {
             UserEntity user1 = new UserEntity();
             user1.setName("John");
@@ -30,7 +32,7 @@ public class UserDataInitializer implements Runnable {
             user1.setBio("TEST");
             user1.setGender("M");
             user1.setActive(true);
-            user1.setPassword("123123123"); //password.encode("123123123")
+            user1.setPassword(passwordEncoder.encode("123123123")); // Hashed password
             user1.setWebsite("https://example.com");
             user1.setProfilePicture("https://example.com/profile.jpg");
             userRepository.save(user1);

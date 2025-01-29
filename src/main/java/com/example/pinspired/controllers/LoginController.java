@@ -31,45 +31,77 @@ public class LoginController {
         return "auth/login";
     }
 
+//    @PostMapping
+//    public String login(@Valid @ModelAttribute LoginRequestDto loginRequestDto,
+//                        BindingResult  bindingResult,
+//                        HttpServletRequest request,
+//                        HttpServletResponse response,
+//                        @RequestParam(value = "returnUrl", required = false) String returnUrl
+//                        ) {
+//
+//        if (bindingResult.hasErrors()) {
+//            return "auth/login";
+//        }
+//
+//        try {
+//            var userDto = userService.login(loginRequestDto.getEmail(), loginRequestDto.getPassword());
+//
+//
+//            HttpSession session = request.getSession();
+//            session.setAttribute("user", userDto);
+//
+//            Cookie cookie = new Cookie("userId", "" + userDto.getId());
+//            if (loginRequestDto.isRememberMe()) {
+//                cookie.setMaxAge(60 * 60 * 24 * 30); // 30 days
+//            } else {
+//                cookie.setMaxAge(60 * 60); // 1 hour
+//            }
+//
+//            response.addCookie(cookie);
+//            if (returnUrl == null || returnUrl.isBlank())
+//                return "redirect:/";
+//            return "redirect:" + returnUrl;
+//        } catch (UserNotFoundException e) {
+//            bindingResult.rejectValue("email", "error.loginRequestDto",
+//                    "User with this email does not exist");
+//            return "auth/login";
+//        } catch (WrongPasswordException e) {
+//            bindingResult.rejectValue("password", "error.loginRequestDto",
+//                    e.getMessage());
+//            return "auth/login";
+//        }
+//    }
+
+
     @PostMapping
     public String login(@Valid @ModelAttribute LoginRequestDto loginRequestDto,
-                        BindingResult  bindingResult,
+                        BindingResult bindingResult,
                         HttpServletRequest request,
-                        HttpServletResponse response,
-                        @RequestParam(value = "returnUrl", required = false) String returnUrl
-                        ) {
-
+                        HttpServletResponse response) {
         if (bindingResult.hasErrors()) {
-            return "auth/login";
+            return "auth/login"; // Redisplay login with errors
         }
 
         try {
             var userDto = userService.login(loginRequestDto.getEmail(), loginRequestDto.getPassword());
 
-
+            // Save user in session
             HttpSession session = request.getSession();
             session.setAttribute("user", userDto);
 
-            Cookie cookie = new Cookie("userId", "" + userDto.getId());
-            if (loginRequestDto.isRememberMe()) {
-                cookie.setMaxAge(60 * 60 * 24 * 30); // 30 days
-            } else {
-                cookie.setMaxAge(60 * 60); // 1 hour
-            }
-
+            // Set cookie for 'Remember Me' functionality
+            Cookie cookie = new Cookie("userId", String.valueOf(userDto.getId()));
+            cookie.setMaxAge(loginRequestDto.isRememberMe() ? 60 * 60 * 24 * 30 : 60 * 60);
             response.addCookie(cookie);
-            if (returnUrl == null || returnUrl.isBlank())
-                return "redirect:/";
-            return "redirect:" + returnUrl;
+
+            return "redirect:/";
         } catch (UserNotFoundException e) {
-            bindingResult.rejectValue("email", "error.loginRequestDto",
-                    "User with this email does not exist");
-            return "auth/login";
+            bindingResult.rejectValue("email", "error.loginRequestDto", "User with this email does not exist.");
         } catch (WrongPasswordException e) {
-            bindingResult.rejectValue("password", "error.loginRequestDto",
-                    e.getMessage());
-            return "auth/login";
+            bindingResult.rejectValue("password", "error.loginRequestDto", "Incorrect password.");
         }
+
+        return "auth/login"; // Return to login on failure
     }
 
 

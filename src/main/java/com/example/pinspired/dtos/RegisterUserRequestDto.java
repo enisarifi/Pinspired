@@ -17,7 +17,7 @@ public class RegisterUserRequestDto {
 
     @Size(min = 3, max = 50, message = "Username should be between 3 and 50 characters")
     @NotBlank(message = "Username should not be empty or blank")
-    @NotNull(message = "Username is required")
+//    @NotNull(message = "Username is required")
     private String username;
 
     @Size(min = 3, max = 50, message = "Email should be between 3 and 50 characters")
