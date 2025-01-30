@@ -15,7 +15,6 @@ public class SimpleCookieFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
 
-        //skip the filter for static resources
         if (request.getRequestURI().startsWith("/assets")) {
             filterChain.doFilter(request, response);
             return;
@@ -31,7 +30,7 @@ public class SimpleCookieFilter extends OncePerRequestFilter {
                 filterChain.doFilter(request, response);
                 return;
             }
-            var returnUrl = request.getRequestURI(); // -> /meters
+            var returnUrl = request.getRequestURI();
             response.sendRedirect("/login?returnUrl=" + returnUrl);
             return;
         }

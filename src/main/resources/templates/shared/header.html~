@@ -36,6 +36,7 @@
                         <p class="topic">Studio Ghibli</p>
                         <p class="topic">Studio Ghibli</p>
                         <p class="topic">Studio Ghibli</p>
+                        <p class="topic" th:text="${pageName}"></p>
 
                     </div>
                 </div>

@@ -26,7 +26,7 @@ public class UserDataInitializer{
             user1.setName("John");
             user1.setSurname("Doe");
             user1.setUsername("rainman");
-            user1.setEmail("john.doe@example.com");
+            user1.setEmail("florent@gmail.com");
             user1.setLocation("New York");
             user1.setBirthdate("1990-01-01");
             user1.setBio("TEST");

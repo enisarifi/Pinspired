@@ -26,18 +26,15 @@ public class LoginController {
 
     @GetMapping
     public String login(HttpServletRequest request, Model model) {
-        // Check if the user is already logged in
         HttpSession session = request.getSession(false);
 
         if (session != null && session.getAttribute("user") != null) {
-            // Log the session status for debugging
-            System.out.println("User is already logged in, redirecting to explore...");
-            return "redirect:/posts";  // Redirect to explore if logged in
+            return "redirect:/posts";
         }
 
         System.out.println("No user in session, showing login form.");
         model.addAttribute("loginRequestDto", new LoginRequestDto());
-        return "auth/login";  // Show login page if no user in session
+        return "auth/login";
     }
 
     @PostMapping
@@ -46,34 +43,28 @@ public class LoginController {
                         HttpServletRequest request,
                         HttpServletResponse response) {
 
-        // Check if there are validation errors
         if (bindingResult.hasErrors()) {
             System.out.println("Validation errors found, returning to login page.");
-            return "auth/login"; // Redisplay login with errors
+            return "auth/login";
         }
 
         try {
             var userDto = userService.login(loginRequestDto.getEmail(), loginRequestDto.getPassword());
 
-            // Log successful login
             System.out.println("User successfully logged in, storing user in session.");
 
-            // Save user in session
             HttpSession session = request.getSession();
             session.setAttribute("user", userDto);
 
-            // Log the session attributes
             System.out.println("Session user attribute: " + session.getAttribute("user"));
 
-            // Set cookie for 'Remember Me' functionality
             Cookie cookie = new Cookie("userId", String.valueOf(userDto.getId()));
             cookie.setMaxAge(loginRequestDto.isRememberMe() ? 60 * 60 * 24 * 30 : 60 * 60);
             response.addCookie(cookie);
 
-            // Log the cookie set status
             System.out.println("Cookie set: userId=" + cookie.getValue());
 
-            return "redirect:/posts";  // Redirect to explore after successful login
+            return "redirect:/posts";
         } catch (UserNotFoundException e) {
             System.out.println("User not found, showing error for email.");
             bindingResult.rejectValue("email", "error.loginRequestDto", "User with this email does not exist.");
@@ -82,7 +73,6 @@ public class LoginController {
             bindingResult.rejectValue("password", "error.loginRequestDto", "Incorrect password.");
         }
 
-        // If login failed, return to login page with error messages
         return "auth/login";
     }
 

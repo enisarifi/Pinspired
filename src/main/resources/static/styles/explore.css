@@ -185,7 +185,7 @@ nav {
     transform: scale(1.5);
     fill: white;
     cursor: pointer;
-    transform: 100ms;
+    transition: 100ms;
 }
 
 .down-arrow-nav:hover {
@@ -465,7 +465,7 @@ border-radius: 50%;
     cursor:pointer;
     border: 2px solid var(--themeColorIGuess);
     outline: 1px solid rgba(0, 0, 0, 0.265);
-    transform: 100ms;
+    transition: 100ms;
 }
 
 

@@ -221,7 +221,7 @@
             <div class="created-from">
                 <div class="created-from-info">
                     <div class="created-from-pfp-container">
-                        <img src="/images/icons/aaruto.jpg" class="created-from-pfp" alt="Profile">
+                        <img src="/images/icons/" class="created-from-pfp" alt="Profile">
                         <div class="created-from-pfp-overlay"></div>
                     </div>
                     <p class="created-from-username">Enis Arifi</p>
