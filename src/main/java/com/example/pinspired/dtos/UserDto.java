@@ -1,5 +1,8 @@
 package com.example.pinspired.dtos;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,12 +11,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    private String id;
+    private long id; // Changed to long
+
+    @NotBlank
+    @Size(min = 3, max = 50)
     private String username;
+
+    @NotBlank
+    @Size(max = 50)
     private String name;
+
+    @NotBlank
+    @Size(max = 50)
     private String surname;
+
+    @NotBlank
+    @Email
     private String email;
-    private String password;
+
     private String profilePicture;
     private String coverPicture;
     private String bio;
@@ -22,5 +37,4 @@ public class UserDto {
     private String birthdate;
     private boolean active;
     private String gender;
-
 }

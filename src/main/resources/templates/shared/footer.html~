@@ -1,4 +1,4 @@
-<footer>Footer</footer>
+<footer>Footeri (TODO)</footer>
 </div>
 <script>
     const postedImg = document.querySelectorAll('.posted-img');

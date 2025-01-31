@@ -34,8 +34,8 @@ public class PostEntity {
     @Column(nullable = false, length = 50_000)
     private String description;
 
-    @Size(max = 500, message = "Image URL must be at most 500 characters")
-    @Column(length = 500)
+    @Size(max = 50_000, message = "Image URL must be at most 50000 characters")
+    @Column(length = 500000)
     private String imageUrl;
 
     @Size(max = 500, message = "Video URL must be at most 500 characters")
@@ -46,7 +46,7 @@ public class PostEntity {
 
     private boolean accessible = true;
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     private LocalDateTime modifiedAt;

@@ -30,7 +30,7 @@ public class PostController {
         return "posts/index";
     }
 
-    @PostMapping  // No path needed here, since it will automatically be mapped to /posts
+    @PostMapping
     public String handleCreatePost(@ModelAttribute("postDto") @Valid PostDto postDto, HttpServletRequest request) {
         var user = (UserDto) request.getSession().getAttribute("user");
         System.out.println("PostDto before save:::::::::::::::::::::::::::::::::: " + postDto);  // Log the PostDto
@@ -41,13 +41,14 @@ public class PostController {
 
         System.out.println("User from session: " + user);
 
-        long userId = Long.parseLong(user.getId());
+        long userId = user.getId();
         postDto.setUserId(userId);
         System.out.println("User ID from session: " + user.getId());
 
+
         // Ensure userId is positive
         if (postDto.getUserId() <= 0) {
-            postDto.setUserId(1L);  // Fallback if necessary, but better to handle via validation
+            postDto.setUserId(1L);
         }
         System.out.println("PostDto UserId: " + postDto.getUserId());
 
@@ -55,12 +56,12 @@ public class PostController {
         postDto.setCreatedAt(LocalDateTime.now());
         postDto.setModifiedAt(LocalDateTime.now());
 
-        postService.create(postDto);  // Save the post
+        postService.create(postDto);
 
-        return "redirect:/posts/";  // Redirect to explore page
+        return "redirect:/posts";
     }
 
-    @GetMapping("/create")  // Adjust path if necessary
+    @GetMapping("/create")
     public String createPost(Model model) {
         model.addAttribute("postDto", new PostDto());
         model.addAttribute("pageName", "create-post");

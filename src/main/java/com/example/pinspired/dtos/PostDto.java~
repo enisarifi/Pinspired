@@ -15,7 +15,7 @@ public class PostDto {
 //    @PositiveOrZero(message = "Id must be positive or zero")
     private long id;
 
-//    @Positive(message = "User id must be positive")
+    @Positive(message = "User id must be positive")
     private long userId;
 
     @Size(max = 150, message = "Title must not exceed 150 characters")

@@ -1,41 +1,20 @@
+
+
+<div class="message">
+    <p class="message-text">
+        Post successfully added!
+    </p>
+
+</div>
+
+
 <section class="images-section">
+
     <div class="images-container">
-        <div th:each="post : ${posts}" class="img-container">
-            <div class="inner-img-container">
-                <img th:src="@{${post.imageUrl}}" class="posted-img" width="300px" alt="">
-
-                <div class="image-overlay" style="display: none;">
-                    <div class="save-options">
-                        <p class="boards-options">Boards</p>
-                        <button class="save-img-btn">Save</button>
-                    </div>
-
-                    <div class="download-share-options">
-                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="created-from">
-                <div class="created-from-info">
-                    <div class="created-from-pfp-container">
-                        <img th:src="@{${post.profileImage}}" class="created-from-pfp" alt="Profile">
-                        <div class="created-from-pfp-overlay"></div>
-                    </div>
-                    <p th:text="${post.username}" class="created-from-username">Username</p>
-                </div>
-            </div>
-        </div>
-
 
         <div  class="img-container">
             <div class="inner-img-container">
-                <img src="/images/explore%20images/7e8cbdf0-cc11-4863-a759-fc702ef45ebb.jpeg" class="posted-img" width="300px" alt="">
+                <img src="/images/explore%20images/n1.jpeg" class="posted-img" width="300px" alt="">
 
                 <div class="image-overlay" style="display: none;">
                     <div class="save-options">
@@ -44,12 +23,8 @@
                     </div>
 
                     <div class="download-share-options">
-                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
                     </div>
                 </div>
             </div>
@@ -57,171 +32,7 @@
             <div class="created-from">
                 <div class="created-from-info">
                     <div class="created-from-pfp-container">
-                        <img src="/images/icons/aaruto.jpg" class="created-from-pfp" alt="Profile">
-                        <div class="created-from-pfp-overlay"></div>
-                    </div>
-                    <p class="created-from-username">Florent Osmani</p>
-                </div>
-            </div>
-        </div>
-
-        <div  class="img-container">
-            <div class="inner-img-container">
-                <img src="/images/explore%20images/33fc6373-e913-48a1-82f7-49883f1751ac.jpeg" class="posted-img" width="300px" alt="">
-
-                <div class="image-overlay" style="display: none;">
-                    <div class="save-options">
-                        <p class="boards-options">Boards</p>
-                        <button class="save-img-btn">Save</button>
-                    </div>
-
-                    <div class="download-share-options">
-                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="created-from">
-                <div class="created-from-info">
-                    <div class="created-from-pfp-container">
-                        <img src="/images/icons/aaruto.jpg" class="created-from-pfp" alt="Profile">
-                        <div class="created-from-pfp-overlay"></div>
-                    </div>
-                    <p class="created-from-username">Florent Osmani</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div  class="img-container">
-            <div class="inner-img-container">
-                <img src="/images/explore%20images/7e8cbdf0-cc11-4863-a759-fc702ef45ebb.jpeg" class="posted-img" width="300px" alt="">
-
-                <div class="image-overlay" style="display: none;">
-                    <div class="save-options">
-                        <p class="boards-options">Boards</p>
-                        <button class="save-img-btn">Save</button>
-                    </div>
-
-                    <div class="download-share-options">
-                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="created-from">
-                <div class="created-from-info">
-                    <div class="created-from-pfp-container">
-                        <img src="/images/icons/hello.jpg" class="created-from-pfp" alt="Profile">
-                        <div class="created-from-pfp-overlay"></div>
-                    </div>
-                    <p class="created-from-username">Ylli Berisha</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div  class="img-container">
-            <div class="inner-img-container">
-                <img src="/images/explore%20images/bb0ccc39-3191-49ce-a14a-d0a7e57b3a4a.jpeg" class="posted-img" width="300px" alt="">
-
-                <div class="image-overlay" style="display: none;">
-                    <div class="save-options">
-                        <p class="boards-options">Boards</p>
-                        <button class="save-img-btn">Save</button>
-                    </div>
-
-                    <div class="download-share-options">
-                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="created-from">
-                <div class="created-from-info">
-                    <div class="created-from-pfp-container">
-                        <img src="/images/icons/hello.jpg" class="created-from-pfp" alt="Profile">
-                        <div class="created-from-pfp-overlay"></div>
-                    </div>
-                    <p class="created-from-username">Ylli Berisha</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div  class="img-container">
-            <div class="inner-img-container">
-                <img src="/images/explore%20images/94b84215-10f1-4513-88ad-759447c94c0e.jpeg" class="posted-img" width="300px" alt="">
-
-                <div class="image-overlay" style="display: none;">
-                    <div class="save-options">
-                        <p class="boards-options">Boards</p>
-                        <button class="save-img-btn">Save</button>
-                    </div>
-
-                    <div class="download-share-options">
-                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="created-from">
-                <div class="created-from-info">
-                    <div class="created-from-pfp-container">
-                        <img src="/images/icons/hello.jpg" class="created-from-pfp" alt="Profile">
-                        <div class="created-from-pfp-overlay"></div>
-                    </div>
-                    <p class="created-from-username">Ylli Berisha</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div  class="img-container">
-            <div class="inner-img-container">
-                <img src="/images/explore%20images/55c98b2f-37ca-4d84-bd8b-2deb58330ced.jpeg" class="posted-img" width="300px" alt="">
-
-                <div class="image-overlay" style="display: none;">
-                    <div class="save-options">
-                        <p class="boards-options">Boards</p>
-                        <button class="save-img-btn">Save</button>
-                    </div>
-
-                    <div class="download-share-options">
-                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="..."/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="created-from">
-                <div class="created-from-info">
-                    <div class="created-from-pfp-container">
-                        <img src="/images/icons/aaruto.jpg" class="created-from-pfp" alt="Profile">
+                        <img src="/images/icons/aura.jpg" class="created-from-pfp" alt="Profile">
                         <div class="created-from-pfp-overlay"></div>
                     </div>
                     <p class="created-from-username">Enis Arifi</p>
@@ -230,7 +41,240 @@
         </div>
 
 
+        <div  class="img-container">
+            <div class="inner-img-container">
+                <img src="/images/explore%20images/n2.jpeg" class="posted-img" width="300px" alt="">
+
+                <div class="image-overlay" style="display: none;">
+                    <div class="save-options">
+                        <p class="boards-options">Boards</p>
+                        <button class="save-img-btn">Save</button>
+                    </div>
+
+                    <div class="download-share-options">
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="created-from">
+                <div class="created-from-info">
+                    <div class="created-from-pfp-container">
+                        <img src="/images/icons/aura.jpg" class="created-from-pfp" alt="Profile">
+                        <div class="created-from-pfp-overlay"></div>
+                    </div>
+                    <p class="created-from-username">Enis Arifi</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div  class="img-container">
+            <div class="inner-img-container">
+                <img src="/images/explore%20images/n3.jpeg" class="posted-img" width="300px" alt="">
+
+                <div class="image-overlay" style="display: none;">
+                    <div class="save-options">
+                        <p class="boards-options">Boards</p>
+                        <button class="save-img-btn">Save</button>
+                    </div>
+
+                    <div class="download-share-options">
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="created-from">
+                <div class="created-from-info">
+                    <div class="created-from-pfp-container">
+                        <img src="/images/icons/aura.jpg" class="created-from-pfp" alt="Profile">
+                        <div class="created-from-pfp-overlay"></div>
+                    </div>
+                    <p class="created-from-username">Enis Arifi</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div  class="img-container">
+            <div class="inner-img-container">
+                <img src="/images/explore%20images/n4.jpeg" class="posted-img" width="300px" alt="">
+
+                <div class="image-overlay" style="display: none;">
+                    <div class="save-options">
+                        <p class="boards-options">Boards</p>
+                        <button class="save-img-btn">Save</button>
+                    </div>
+
+                    <div class="download-share-options">
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="created-from">
+                <div class="created-from-info">
+                    <div class="created-from-pfp-container">
+                        <img src="/images/icons/aura.jpg" class="created-from-pfp" alt="Profile">
+                        <div class="created-from-pfp-overlay"></div>
+                    </div>
+                    <p class="created-from-username">Enis Arifi</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div  class="img-container">
+            <div class="inner-img-container">
+                <img src="/images/explore%20images/n6.jpeg" class="posted-img" width="300px" alt="">
+
+                <div class="image-overlay" style="display: none;">
+                    <div class="save-options">
+                        <p class="boards-options">Boards</p>
+                        <button class="save-img-btn">Save</button>
+                    </div>
+
+                    <div class="download-share-options">
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="created-from">
+                <div class="created-from-info">
+                    <div class="created-from-pfp-container">
+                        <img src="/images/icons/aura.jpg" class="created-from-pfp" alt="Profile">
+                        <div class="created-from-pfp-overlay"></div>
+                    </div>
+                    <p class="created-from-username">Enis Arifi</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div  class="img-container">
+            <div class="inner-img-container">
+                <img src="/images/explore%20images/n7.jpeg" class="posted-img" width="300px" alt="">
+
+                <div class="image-overlay" style="display: none;">
+                    <div class="save-options">
+                        <p class="boards-options">Boards</p>
+                        <button class="save-img-btn">Save</button>
+                    </div>
+
+                    <div class="download-share-options">
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="created-from">
+                <div class="created-from-info">
+                    <div class="created-from-pfp-container">
+                        <img src="/images/icons/aura.jpg" class="created-from-pfp" alt="Profile">
+                        <div class="created-from-pfp-overlay"></div>
+                    </div>
+                    <p class="created-from-username">Enis Arifi</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div  class="img-container">
+            <div class="inner-img-container">
+                <img src="/images/explore%20images/n8.jpeg" class="posted-img" width="300px" alt="">
+
+                <div class="image-overlay" style="display: none;">
+                    <div class="save-options">
+                        <p class="boards-options">Boards</p>
+                        <button class="save-img-btn">Save</button>
+                    </div>
+
+                    <div class="download-share-options">
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="created-from">
+                <div class="created-from-info">
+                    <div class="created-from-pfp-container">
+                        <img src="/images/icons/aura.jpg" class="created-from-pfp" alt="Profile">
+                        <div class="created-from-pfp-overlay"></div>
+                    </div>
+                    <p class="created-from-username">Enis Arifi</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div  class="img-container">
+            <div class="inner-img-container">
+                <img src="/images/explore%20images/n9.jpeg" class="posted-img" width="300px" alt="">
+
+                <div class="image-overlay" style="display: none;">
+                    <div class="save-options">
+                        <p class="boards-options">Boards</p>
+                        <button class="save-img-btn">Save</button>
+                    </div>
+
+                    <div class="download-share-options">
+                        <svg class="share-img" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+                        <svg class="download" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="created-from">
+                <div class="created-from-info">
+                    <div class="created-from-pfp-container">
+                        <img src="/images/icons/aura.jpg" class="created-from-pfp" alt="Profile">
+                        <div class="created-from-pfp-overlay"></div>
+                    </div>
+                    <p class="created-from-username">Enis Arifi</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
     </div>
 
-
 </section>
+
+<div class="main-end"><p>Looks like you have reached the end (do you feel inspired?)</p></div>
+        
