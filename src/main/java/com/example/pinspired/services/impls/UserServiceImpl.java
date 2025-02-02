@@ -1,49 +1,40 @@
 package com.example.pinspired.services.impls;
 
+import com.example.pinspired.dtos.PostDto;
 import com.example.pinspired.dtos.RegisterUserRequestDto;
 import com.example.pinspired.dtos.UserDto;
+import com.example.pinspired.entities.PostEntity;
 import com.example.pinspired.entities.UserEntity;
 import com.example.pinspired.exceptions.EmailExistException;
 import com.example.pinspired.exceptions.UserNotFoundException;
 import com.example.pinspired.exceptions.UsernameExistException;
 import com.example.pinspired.exceptions.WrongPasswordException;
-import com.example.pinspired.mappers.UserMapperImpl;
+import com.example.pinspired.mappers.PostMapper;
+import com.example.pinspired.mappers.UserMapper;
+import com.example.pinspired.repositories.PostRepository;
 import com.example.pinspired.repositories.UserRepository;
 import com.example.pinspired.services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    private final UserRepository repository;
-    private final UserMapperImpl userMapperImpl;
+    private final UserRepository userRepository;
+    private final PostRepository postRepository;
+//    private final UserMapperImpl userMapperImpl;
+    private final UserMapper userMapper;
+    private final PostMapper postMapper;
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository repository, UserMapperImpl userMapperImpl, PasswordEncoder passwordEncoder) {
-        this.repository = repository;
-        this.userMapperImpl = userMapperImpl;
-        this.passwordEncoder = passwordEncoder;
-
-//        if (repository.count() == 0) {
-//            User user = new User();
-//            user.setEmail("naim.sulejmani@gmail.com");
-//            user.setActive(true);
-//            user.setName("Naim");
-//            user.setSurname("Sulejmani");
-//            user.setBirthdate(LocalDate.parse("1986-12-16"));
-//            user.setRole("ROLE_ADMIN");
-//            user.setPhone("049111111");
-//            user.setPassword("Admin123");
-//            user.setUsername("naimsulejmani");
-//
-//            repository.save(user);
-//
-//        }
-    }
 
     @Override
     public UserDto login(String email, String password) {
-        UserEntity user = repository.findByEmail(email).orElse(null);
+        UserEntity user = userRepository.findByEmail(email).orElse(null);
 
         if (user == null) {
             throw new UserNotFoundException();
@@ -52,27 +43,63 @@ public class UserServiceImpl implements UserService {
             throw new WrongPasswordException();
         }
 
-        return userMapperImpl.toDto(user);
+        return userMapper.toDto(user);
     }
 
     @Override
     public boolean register(RegisterUserRequestDto registerUserRequestDto) {
-        if (repository.findByUsername(registerUserRequestDto.getUsername()).isPresent()) {
+        if (userRepository.findByUsername(registerUserRequestDto.getUsername()).isPresent()) {
             throw new UsernameExistException();
         }
-        if (repository.findByEmail(registerUserRequestDto.getEmail()).isPresent()) {
+        if (userRepository.findByEmail(registerUserRequestDto.getEmail()).isPresent()) {
             throw new EmailExistException();
         }
 
-        UserEntity user = userMapperImpl.userRequestDtoToUser(registerUserRequestDto);
+        UserEntity user = userMapper.userRequestDtoToUser(registerUserRequestDto);
         user.setActive(true);
 
         user.setPassword(passwordEncoder.encode(registerUserRequestDto.getPassword()));
 
-        repository.save(user);
+        userRepository.save(user);
 
         return true;
     }
+
+    public void savePostForUser(Long userId, Long postId) {
+        UserEntity user = userRepository.findById(userId).orElseThrow();
+        PostEntity post = postRepository.findById(postId).orElseThrow();
+        user.getSavedPosts().add(post);
+        userRepository.save(user);
+    }
+
+
+    public void unsavePostForUser(Long userId, Long postId) {
+        UserEntity user = userRepository.findById(userId).orElseThrow();
+        user.setSavedPosts(
+                user.getSavedPosts().stream()
+                        .filter(p -> p.getId() != postId)
+                        .collect(Collectors.toList())
+        );
+        userRepository.save(user);
+    }
+
+
+    @Override
+    public UserDto convertToDto(UserEntity user) {
+        UserDto dto = userMapper.toDto(user);
+        dto.setSavedPostIds(user.getSavedPosts().stream()
+                .map(PostEntity::getId)
+                .collect(Collectors.toList()));
+        return dto;
+    }
+
+    @Override
+    public UserDto getUserById(Long userId) {
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException());
+        return userMapper.toDto(user);
+    }
+
 }
 
 

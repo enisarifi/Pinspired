@@ -3,10 +3,10 @@
     <form class="form-container" th:action="@{/posts}" method="post" th:object="${postDto}" enctype="multipart/form-data">
         <div class="form-inner-container">
             <div class="image-container">
-                <img id="uploadedImage" class="uploaded-image" src="https://via.placeholder.com/200" alt="Uploaded Picture">
+                <img id="uploadedImage" class="uploaded-image" src="/images/icons/place_holder_for_create_post.png" alt="Uploaded Picture">
                 <div class="image-upload">
-                    <!-- <label for="imageUpload" class="image-info">Upload a picture</label> <br> -->
                     <input type="file" id="imageUpload" name="image" accept="image/*" class="image-input">
+                    <p class="image-title" style="display: none"></p>
                     <button id="removeImageButton" class="remove-image-button">Remove Picture</button>
                 </div>
             </div>
@@ -36,6 +36,7 @@
             </div>
         </div>
     </form>
+
 </div>
 
 <script>
@@ -45,6 +46,8 @@
     const linkInput = document.querySelector('input[type="url"][placeholder="Add a link"]');
     const removeImageButton = document.getElementById('removeImageButton');
     const uploadLabel = document.querySelector('.image-info');
+    const imageTitle = document.querySelector(".image-title");
+    // uploadedImage.style.display = "none";
 
     imageUpload.addEventListener('change', function (event) {
         const file = event.target.files[0];
@@ -58,6 +61,12 @@
                 const fileName = file.name.split('.').slice(0, -1).join('.'); //me ia hjek file extension
                 titleInput.value = fileName;
 
+                imageTitle.style.display = "inline"
+
+                if(fileName.length > 30) {
+                    imageTitle.textContent = "Image name : " + fileName.substring(0, 30) + "...";
+                } else imageTitle.textContent = "Image name : " + fileName;
+
                 linkInput.disabled = true;
 
                 removeImageButton.style.display = 'inline-block';
@@ -66,12 +75,17 @@
 
             reader.readAsDataURL(file);
         }
+        imageUpload.style.display = "none";
     });
 
     removeImageButton.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
+        imageUpload.style.display = "block";
+        imageTitle.style.display = "none"
+        imageTitle.textContent = "";
 
-        uploadedImage.src = 'https://via.placeholder.com/200';
+
+        uploadedImage.src = '/images/icons/place_holder_for_create_post.png';
 
         imageUpload.value = '';
         titleInput.value = '';

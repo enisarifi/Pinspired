@@ -23,18 +23,18 @@ public class UserDataInitializer{
     public void initialize() {
         if (userRepository.count() == 0) {
             UserEntity user1 = new UserEntity();
-            user1.setName("John");
-            user1.setSurname("Doe");
+            user1.setName("Enis");
+            user1.setSurname("Arifi");
             user1.setUsername("rainman");
-            user1.setEmail("florent@gmail.com");
-            user1.setLocation("New York");
-            user1.setBirthdate("1990-01-01");
+            user1.setEmail("enis@gmail.com");
+            user1.setLocation("Podujeva");
+            user1.setBirthdate("2005-18-01");
             user1.setBio("TEST");
             user1.setGender("M");
             user1.setActive(true);
-            user1.setPassword(passwordEncoder.encode("YlliBerisha2005")); // Hashed password
-            user1.setWebsite("https://example.com");
-            user1.setProfilePicture("https://example.com/profile.jpg");
+            user1.setPassword(passwordEncoder.encode("Shpejt123")); // Hashed password
+            user1.setWebsite("https://www.youtube.com");
+            user1.setProfilePicture("/images/icons/no_pfp.png");
             userRepository.save(user1);
         }
     }

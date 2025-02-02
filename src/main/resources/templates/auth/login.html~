@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinspire Landing Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/login-style.css">
+    <link rel="stylesheet" href="@{/styles/login-style.css}">
 
     <style>
+
+
 
         /* Global Styles */
         * {
@@ -31,7 +33,6 @@
             padding: 0 2rem;
             position: sticky;
             top: 0;
-            z-index: 1000;
             background-image: linear-gradient(to right, #559a56, #79af79, #559a56 );
         }
 
@@ -50,6 +51,20 @@
             justify-content: space-between;
             gap: 20px;
         }
+
+
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+            background-color: #ffffff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #3a5c3a;
+            padding: 1px 5px;
+            border-radius: 20px;
+        }
+
 
         .navbar-title {
             font-size:1.7rem;
@@ -100,7 +115,7 @@
             min-height: calc(100vh - 80px);
             align-items: center;
             padding: 2rem;
-            background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent),
             url("/static/images/icons/aaruto.jpg");
             background-size: cover;
             background-position: center;
@@ -115,10 +130,9 @@
         }
 
         .promo-section {
+            /*margin-top: -200px;*/
             color: white;
             max-width: 40%;
-            position: sticky;
-            top: 30%;
             display: flex;
             flex-direction: column;
             gap: 60px;
@@ -134,14 +148,12 @@
 
         .signup-form-section {
             background: rgba(255, 255, 255, 0.1);
-            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.447), rgba(255, 255, 255, 0.1) );
             backdrop-filter: blur(8px);
             padding: 2rem;
             border-radius: 20px;
             max-width: 400px;
             margin: auto;
-            height: max-content;
-            box-shadow: 0 0 20px black;
+            height: 500px;
         }
 
         .signup-card h2 {
@@ -164,18 +176,6 @@
             padding: 0.75rem;
             border-radius: 5px;
             border: none;
-        }
-
-
-        ::-webkit-scrollbar {
-            width: 5px;
-            height: 5px;
-            background-color: #ffffff;
-        }
-        ::-webkit-scrollbar-thumb {
-            background-color: #3a5c3a;
-            padding: 1px 5px;
-            border-radius: 20px;
         }
 
         .continue-btn {
@@ -223,41 +223,9 @@
             }
         }
 
-
-        .terms-container {
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .terms-label {
-            font-size: 14px;
-            color: rgb(186, 186, 186);
-            display: flex;
-            align-items: center;
-        }
-
-        .terms-label input[type="checkbox"] {
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .terms-label a.terms-link {
-            color: #79AF79; /* Theme color */
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .terms-label a.terms-link:hover {
-            text-decoration: underline;
-        }
-
-
         .background-image {
             /* height: 100%; */
-            width: 143%;
+            width: 120%;
             position: absolute;
             top: 0;
             z-index: -1;
@@ -266,9 +234,7 @@
         }
 
         body {
-            overflow: scroll;
-            overflow-x: hidden;
-            height: max-content;
+            overflow: hidden;
         }
 
         /* <section class="promo-section">
@@ -278,7 +244,7 @@
 
         .promo-section {
             display: flex;
-            margin-top: 60px;
+            margin-top: 20px;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
@@ -300,17 +266,16 @@
             font-size: .9rem;
         }
 
-
     </style>
 </head>
 <body>
 
-<img class="background-image" src="/Resources/Screenshot 2024-11-17 200618.png" alt="">
+<img class="background-image" th:src="${'/images/icons/backgroundForLoginAndSignup.jpg'}" alt="">
 
 <header>
     <nav class="navbar">
         <div class="logo">
-            <img src="/Resources/Ma logo dawg.png" class="navbar-logo" alt="" srcset="">
+            <img src="/images/icons/Ma%20logo%20dawg.png" class="navbar-logo" alt="" srcset="">
             <!-- <img src="/images/icons/Ma%20logo%20dawg.png" class="navbar-logo" alt=""> -->
             <p class="navbar-title">Pinspired</p>
 
@@ -323,8 +288,8 @@
             <li><a href="#">Blog</a></li>
         </ul>
         <div class="auth-buttons">
-            <button onclick="window.location.href='/llagin.html'" class="login-btn">Log In</button>
-            <button  onclick="window.location.href='/register.html'"  class="signup-btn">Sign up</button>
+            <button onclick="window.location.href='/login'" class="login-btn">Log In</button>
+            <button  onclick="window.location.href='/register'"  class="signup-btn">Sign up</button>
         </div>
     </nav>
 </header>
@@ -334,66 +299,26 @@
 
     <div class="content-wrapper">
         <section class="promo-section">
-            <p style="font-size: 2rem; font-weight: 600;" class="no-account-h">Already have an Account?</p>
-            <p class="signup-h" style="font-size: 4rem; font-weight: 600;">Sign In To Get Inspiration</p>
-            <button onclick="window.location.href='/login'" class="go-to-login-btn">Go to Log In Page</button>
-
+            <p style="font-size: 2rem; font-weight: 600;" class="no-account-h">No Account?</p>
+            <p class="signup-h" style="font-size: 4rem; font-weight: 600;">Sign Up To Get Inspiration</p>
+            <button onclick="window.location.href='/register'" class="go-to-login-btn">Go to Sign Up Page</button>
         </section>
 
         <section class="signup-form-section">
             <div class="signup-card">
-                <h2>Welcome To Pinspire</h2>
+                <h2>Welcome Back To Pinspire</h2>
                 <p>Find new ideas to share</p>
 
-                <form th:action="@{/register}" th:object="${registerUserRequestDto}" method="post">
-
-                    <!-- Username Field -->
-                    <label for="username">Username</label>
-                    <input type="text" id="username" th:field="*{username}" placeholder="Username" required>
-                    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color:red;"></p>
-
-                    <!-- Email Field -->
+                <form th:action="@{/login}" th:object="${loginRequestDto}" method="post">
                     <label for="email">Email</label>
                     <input type="email" id="email" th:field="*{email}" placeholder="Email" required>
                     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;"></p>
 
-                    <!-- Name Field -->
-                    <label for="name">Name</label>
-                    <input type="text" id="name" th:field="*{name}" placeholder="Name" required>
-                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red;"></p>
-
-                    <label for="surname">Surname</label>
-                    <input type="text" id="surname" th:field="*{surname}" placeholder="Surname" required>
-                    <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color:red;"></p>
-
-
-                    <!-- Birthdate Field -->
-                    <label for="birthdate">Birthdate</label>
-                    <input type="date" id="birthdate" th:field="*{birthdate}" required>
-                    <p th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}" style="color:red;"></p>
-
-                    <!-- Password Field -->
                     <label for="password">Password</label>
                     <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
                     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color:red;"></p>
 
-                    <!-- Confirm Password Field -->
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" th:field="*{confirmPassword}" placeholder="Confirm Password" required>
-                    <p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" style="color:red;"></p>
-
-                    <!-- Terms Checkbox -->
-                    <div class="terms-container">
-                        <label for="acceptTerms">
-                            <input type="checkbox" id="acceptTerms" th:field="*{acceptTerms}" required />
-                            I accept the <a href="/terms" target="_blank" class="terms-link">terms and conditions</a>.
-                        </label>
-                    </div>
-                    <p th:if="${#fields.hasErrors('acceptTerms')}" th:errors="*{acceptTerms}" style="color:red;"></p>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="continue-btn">Register</button>
-
+                    <button type="submit" class="continue-btn">Log In</button>
                 </form>
 
 

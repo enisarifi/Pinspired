@@ -361,7 +361,7 @@
                     <label for="name">Name</label>
                     <input type="text" id="name" th:field="*{name}" placeholder="Name" required>
                     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red;"></p>
-
+                    
                     <label for="surname">Surname</label>
                     <input type="text" id="surname" th:field="*{surname}" placeholder="Surname" required>
                     <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color:red;"></p>

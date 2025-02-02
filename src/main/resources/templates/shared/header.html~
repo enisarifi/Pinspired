@@ -12,7 +12,7 @@
             <link th:if="${pageName == 'create-post'}" rel="stylesheet" href="/styles/create-post.css">
             <link th:if="${pageName == 'create-post'}" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-            <style>
+            <style th:if="${pageName == 'explore'}">
                 :root {
                     --headerHeight : 156px;
                     --menuWidth : 90px;
@@ -369,7 +369,7 @@
                 .images-container {
                     margin-top: 15px;
                     width: 100%;
-                    columns: 4 200px;
+                    columns: 5 200px;
                     column-gap: 30px;
                     padding-bottom: 50px;
                     padding: 20px;
@@ -430,9 +430,29 @@
                     transition: 50ms;
                     cursor: pointer;
                 }
+
+                .save-img-btn {
+                    padding: 10px 15px;
+                    color: white;
+                    background-color: #79AF79;
+                    font-size: 1.2rem;
+                    border: none;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.256);
+                    border-radius: 20px;
+                    transition: 50ms;
+                    cursor: pointer;
+                }
+
                 .save-img-btn:hover {
                     background-color: #6ea06e;
                 }
+
+                .save-img-btn.saved {
+                    background-color: rgba(255, 255, 255, 0.7);
+                }
+
+
+
                 .boards-options {
                     color: white;
                     font-size: 1rem;
@@ -501,6 +521,9 @@
                     color: white;
                     font-family: "poppins", sans-serif;
                 }
+
+                
+
             </style>
         </head>
         <body>

@@ -19,12 +19,12 @@ import java.time.LocalDate;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/login")
+@RequestMapping
 public class LoginController {
 
     private final UserService userService;
 
-    @GetMapping
+    @GetMapping("/login")
     public String login(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
 
@@ -33,11 +33,12 @@ public class LoginController {
         }
 
         System.out.println("No user in session, showing login form.");
+        model.addAttribute("imageUrl", "/images/icons/backgroundForLoginAndSignup.jpg");
         model.addAttribute("loginRequestDto", new LoginRequestDto());
         return "auth/login";
     }
 
-    @PostMapping
+    @PostMapping("/login")
     public String login(@Valid @ModelAttribute LoginRequestDto loginRequestDto,
                         BindingResult bindingResult,
                         HttpServletRequest request,
@@ -60,6 +61,9 @@ public class LoginController {
 
             Cookie cookie = new Cookie("userId", String.valueOf(userDto.getId()));
             cookie.setMaxAge(loginRequestDto.isRememberMe() ? 60 * 60 * 24 * 30 : 60 * 60);
+            cookie.setHttpOnly(true);
+            cookie.setSecure(true);
+            cookie.setPath("/");
             response.addCookie(cookie);
 
             System.out.println("Cookie set: userId=" + cookie.getValue());
@@ -91,6 +95,10 @@ public class LoginController {
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute RegisterUserRequestDto registerUserRequestDto,
                            BindingResult bindingResult) {
+
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.println("Received Surname: " + registerUserRequestDto.getSurname());
+
         if (bindingResult.hasErrors()) {
             return "auth/register";
         }
@@ -111,6 +119,11 @@ public class LoginController {
             return "auth/register";
         }
 
+
+
+
+
+
         return "redirect:/login";
     }
 
@@ -126,6 +139,9 @@ public class LoginController {
         // Clear the cookie
         Cookie cookie = new Cookie("userId", "");
         cookie.setMaxAge(0);  // Expire the cookie
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
         response.addCookie(cookie);
 
         return "redirect:/login";  // Redirect to login page after logout

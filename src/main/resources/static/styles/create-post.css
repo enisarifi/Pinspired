@@ -265,7 +265,9 @@ main {
 
 
 .container {
-    background-image: linear-gradient(to top, #63A975, #79AF79);
+
+    /*background-image: linear-gradient(to top, #63A975, #79AF79);*/
+    background-image: linear-gradient(to top, #3b6e3b, #79AF79);
     width: 100%;
     /* padding: 40px; */
     /* height: 100%; */
@@ -318,7 +320,7 @@ textarea.form-control {
 
 .btn-primary {
     height: 45px;
-    background-color: #2C6E49;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 10px;
@@ -328,7 +330,7 @@ textarea.form-control {
 }
 
 .btn-primary:hover {
-    background-color: #234b34;
+    background-color: #212121;
 }
 
 .image-container {
@@ -347,6 +349,9 @@ textarea.form-control {
     text-align: center;
     gap: 40px;
     height: fit-content;
+    max-height: 460px;
+    margin-top: 27px;
+    margin-right: 150px;
 }
 
 .image-container img {
@@ -419,4 +424,11 @@ textarea.form-control {
 
 .remove-image-button:hover {
     background-color: #cc0000;
+}
+
+.uploaded-image {
+    max-height: 320px;
+    object-fit: scale-down;
+    object-position: top;
+    width: 100%;
 }

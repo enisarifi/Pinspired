@@ -59,7 +59,7 @@ main {
     align-items: center;
     padding: 2rem;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent),
-    url('https://source.unsplash.com/1600x900/?space');
+    url("/static/images/icons/aaruto.jpg");
     background-size: cover;
     background-position: center;
 }

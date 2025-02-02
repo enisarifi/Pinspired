@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,4 +40,7 @@ public class UserDto {
     private String birthdate;
     private boolean active;
     private String gender;
+
+    private List<Long> savedPostIds = new ArrayList<>();
+
 }

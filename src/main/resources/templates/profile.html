@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/styles/profile2.css">
+    <style>
+        .active {
+            text-decoration: underline !important;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+        .active-tab {
+            text-decoration: underline !important;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+    </style>
+</head>
+<body>
+<div class="errything-container">
+    <header>
+        <th:block th:insert="~{shared/navbar.html}"></th:block>
+    </header>
+
+    <th:block th:insert="~{/shared/menu.html}"></th:block>
+
+    <main>
+        <section class="profile-container">
+            <div class="general-info-container">
+                <div class="info-inner-container">
+                    <div class="profile-picture-container">
+                        <div class="actual-pfp-container">
+                            <img class="actual-pfp" th:src="${user.profilePicture}" alt="Profile Picture">
+                        </div>
+                    </div>
+                    <p class="name-surname" th:text="${user.name + ' ' + user.surname}"></p>
+                    <p class="username" th:text="'@' + ${user.username}"></p>
+
+                    <div class="buttons-container">
+                        <th:block th:if="${isOwnProfile}">
+                            <button class="profile-btn">Share</button>
+                            <button class="profile-btn" id="blackBtn">Edit Profile</button>
+                        </th:block>
+                        <th:block th:unless="${isOwnProfile}">
+                            <button class="profile-btn">Follow</button>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+
+            <div class="posts">
+                <div class="options">
+                    <p class="option" id="savedOption"
+                       th:classappend="${selectedTab == 'saved'} ? 'active-tab' : ''"
+                       onclick="showTab('saved')">Saved</p>
+
+                    <p class="option" id="createdOption"
+                       th:classappend="${selectedTab == 'created'} ? 'active-tab' : ''"
+                       onclick="showTab('created')">Created</p>
+                </div>
+
+                <div class="posts-body-saved" th:classappend="${selectedTab == 'saved'} ? '' : 'hidden'">
+                    <div class="category">
+                        <p class="category-name">All Saved Posts</p>
+                        <div class="preview" th:with="count=${#lists.size(savedPosts)}">
+                            <div th:each="post : ${savedPosts}"
+                                 class="inner-preview"
+                                 th:style="'flex-basis: ' + ${100.0/count} + '%;'">
+                                <img class="inner-preview-img" th:src="@{'/uploads/' + ${post.imageUrl}}" alt="Post preview">
+                            </div>
+                            <p th:if="${#lists.isEmpty(savedPosts)}" class="no-posts">No saved posts yet</p>
+                        </div>
+                        <p class="amount-of-pins" th:text="${#lists.size(savedPosts)} + ' pins'"></p>
+                    </div>
+                </div>
+
+                <div class="posts-body-created" th:classappend="${selectedTab == 'created'} ? '' : 'hidden'">
+                    <div class="category">
+                        <p class="category-name">All Created Posts</p>
+                        <div class="preview" th:with="count=${#lists.size(createdPosts)}">
+                            <div th:each="post : ${createdPosts}"
+                                 class="inner-preview"
+                                 th:style="'flex-basis: ' + ${100.0/count} + '%;'">
+                                <img class="inner-preview-img" th:src="@{'/uploads/' + ${post.imageUrl}}" alt="Post preview">
+                            </div>
+                            <p th:if="${#lists.isEmpty(createdPosts)}" class="no-posts">No created posts yet</p>
+                        </div>
+                        <p class="amount-of-pins" th:text="${#lists.size(createdPosts)} + ' pins'"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialTab = /*[[${selectedTab}]]*/ 'created';
+            showTab(initialTab);
+        });
+
+        function showTab(tabName) {
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('active-tab');
+            });
+
+            document.getElementById(tabName + 'Option').classList.add('active-tab');
+
+            document.querySelectorAll('[class*="posts-body-"]').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.querySelector(`.posts-body-${tabName}`).classList.remove('hidden');
+        }
+        /*]]>*/
+    </script>
+
+    <footer>Footer</footer>
+</div>
+
+
+
+
+
+</body>
+</html>

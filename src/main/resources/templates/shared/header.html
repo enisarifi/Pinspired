@@ -369,7 +369,7 @@
                 .images-container {
                     margin-top: 15px;
                     width: 100%;
-                    columns: 4 200px;
+                    columns: 5 200px;
                     column-gap: 30px;
                     padding-bottom: 50px;
                     padding: 20px;
@@ -430,9 +430,29 @@
                     transition: 50ms;
                     cursor: pointer;
                 }
+
+                .save-img-btn {
+                    padding: 10px 15px;
+                    color: white;
+                    background-color: #79AF79;
+                    font-size: 1.2rem;
+                    border: none;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.256);
+                    border-radius: 20px;
+                    transition: 50ms;
+                    cursor: pointer;
+                }
+
                 .save-img-btn:hover {
                     background-color: #6ea06e;
                 }
+
+                .save-img-btn.saved {
+                    background-color: rgba(255, 255, 255, 0.7);
+                }
+
+
+
                 .boards-options {
                     color: white;
                     font-size: 1rem;
@@ -501,6 +521,24 @@
                     color: white;
                     font-family: "poppins", sans-serif;
                 }
+
+                .profile-link {
+                    text-decoration: none;
+                    color: inherit;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .created-from-pfp-container {
+                    position: relative;
+                    /* Your existing styles */
+                }
+
+                .created-from-pfp-overlay {
+                    /* Your existing overlay styles */
+                }
+
             </style>
         </head>
         <body>

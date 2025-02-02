@@ -12,31 +12,32 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
-    private final PostRepository repository;
+    private final PostRepository postRepository;
     private final UserRepository userRepository;
-    private final PostMapper mapper;
+    private final PostMapper postMapper;
 
 
     @Override
     public List<PostDto> findAll() {
-        var posts = repository.findAll();
-        return mapper.toDtos(posts);
+        var posts = postRepository.findAll();
+        return postMapper.toDtos(posts);
         // return posts.stream().map(mapper::toDto).toList();
     }
 
     @Override
     public PostDto findById(Long id) {
-        var optionalPost = repository.findById(id);
+        var optionalPost = postRepository.findById(id);
 
         if (optionalPost.isEmpty()) {
             throw new EntityNotFoundException("Post with id " + id + " not found");
         }
 
-        return mapper.toDto(optionalPost.get());
+        return postMapper.toDto(optionalPost.get());
 
 
 //        var post = repository.findById(id).orElse(null);
@@ -60,7 +61,7 @@ public class PostServiceImpl implements PostService {
             throw new IllegalArgumentException("Id does not match");
         }
 
-        if (!repository.existsById(id)) {
+        if (!postRepository.existsById(id)) {
             throw new EntityNotFoundException("Post with id " + id + " not found");
         }
         // valido a eshte edhe i user-it te njejte (te loguar sipas session / token)
@@ -72,22 +73,22 @@ public class PostServiceImpl implements PostService {
     }
 
     private PostDto save(PostDto model) {
-        var postEntity = mapper.toEntity(model);
-        var savedPost = repository.save(postEntity);
-        return mapper.toDto(savedPost);
+        var postEntity = postMapper.toEntity(model);
+        var savedPost = postRepository.save(postEntity);
+        return postMapper.toDto(savedPost);
     }
 
     @Override
     public void removeById(Long id) {
-        if (!repository.existsById(id)) {
+        if (!postRepository.existsById(id)) {
             throw new EntityNotFoundException("Post with id " + id + " not found");
         }
 
-        repository.deleteById(id);
+        postRepository.deleteById(id);
     }
 
     @Override
-    public void create(PostDto postDto) {
+    public PostEntity create(PostDto postDto) {
         // Ensure user exists
         if (postDto.getUserId() <= 0) {
             throw new IllegalArgumentException("Invalid userId");
@@ -106,7 +107,23 @@ public class PostServiceImpl implements PostService {
         post.setUserEntity(user);
 
         // Save post to repository
-        repository.save(post);
+        return postRepository.save(post);
+    }
+
+    @Override
+    public List<PostDto> getPostsByIds(List<Long> postIds) {
+
+        return postRepository.findAllById(postIds).stream()
+                .map(postMapper::toDto)
+                .collect(Collectors.toList());
+
+    };
+
+    @Override
+    public List<PostDto> getPostsByUserId(Long userId) {
+        return postRepository.findByUserEntityId(userId).stream()
+                .map(postMapper::toDto)
+                .collect(Collectors.toList());
     }
 
 }

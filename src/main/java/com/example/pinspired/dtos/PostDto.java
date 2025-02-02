@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,13 +27,19 @@ public class PostDto {
     @Size(max = 50_000, message = "Description must not exceed 50_000 characters")
     private String description;
 
-    @NotNull(message = "Image URL must not be null")
+//    @NotNull(message = "Image URL must not be null")
     private String imageUrl;
 
 
     private String videoUrl;
 
     private String topic;
+
+    private MultipartFile imageFile;
+
+    //realisht ish dasht me ba ni listing post dto ama po vazhdoj sherri kohes
+    private String profilePicture;
+    private String username;
 
 
     private boolean accessible;

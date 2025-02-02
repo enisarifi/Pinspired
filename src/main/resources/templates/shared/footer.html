@@ -1,63 +1,62 @@
 <footer>Footer</footer>
 </div>
 <script>
+    // Updated JavaScript with style preservation
+    // Original functionality with your styling preserved
     const postedImg = document.querySelectorAll('.posted-img');
     const messageBox = document.querySelector(".message");
 
     postedImg.forEach(img => {
         const parent = img.parentElement;
-        const overlay = parent.children[1];
-        const saveBtn = overlay.querySelector(".save-img-btn");
+        const overlay = parent.querySelector('.image-overlay');
+        const saveBtn = overlay.querySelector('.save-img-btn');
 
-        if (parent.className === "inner-img-container") {
-            img.addEventListener('mouseover', () => onPostedImgHover(img, overlay));
-            overlay.addEventListener('mouseleave', () => onPostedImgLeave(img, overlay));
+        // Original hover handlers
+        img.addEventListener('mouseover', () => {
+            img.style.filter = "brightness(80%)";
+            overlay.style.display = "flex";
+        });
 
-            saveBtn.addEventListener('click', (e) => {
-                if (saveBtn.classList.contains("save-img-btn")) {
+        parent.addEventListener('mouseleave', () => {
+            img.style.filter = "brightness(100%)";
+            overlay.style.display = "none";
+        });
+
+        // Save button click handler (original styling preserved)
+        saveBtn.addEventListener('click', async (e) => {
+            const postId = e.target.dataset.postId;
+            const isSaved = e.target.classList.contains('saved');
+
+            try {
+                const response = await fetch(`/posts/${isSaved ? 'unsave' : 'save'}/${postId}`, {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    // Preserve your original visual changes
+                    e.target.classList.toggle('saved');
+                    e.target.textContent = isSaved ? 'Save' : 'Unsave';
+                    e.target.style.backgroundColor = isSaved ? '#79Af79' : 'rgba(255, 255, 255, 0.7)';
+
+                    // Your original message styling
                     messageBox.style.opacity = 0;
-                    messageBox.querySelector("p").textContent = "Post successfully saved!";
-
+                    messageBox.querySelector("p").textContent =
+                        isSaved ? 'Post successfully unsaved!' : 'Post successfully saved!';
                     messageBox.style.display = "flex";
                     messageBox.style.opacity = 1;
+
                     setTimeout(() => {
                         messageBox.style.opacity = "0";
-                        messageBox.style.display = "none";
+                        setTimeout(() => {
+                            messageBox.style.display = "none";
+                        }, 300);
                     }, 2000);
-
-                    saveBtn.style.backgroundColor = "rgb(255,255,255, .7)";
-                    saveBtn.textContent = "Unsave";
-                    saveBtn.classList = "btn-unsave";
-                    overlay.style.display = "none";
-                } else if (saveBtn.classList.contains("btn-unsave")) {
-                    messageBox.style.opacity = 0;
-                    messageBox.querySelector("p").textContent = "Post successfully unsaved!";
-
-                    messageBox.style.display = "flex";
-                    messageBox.style.opacity = 1;
-                    setTimeout(() => {
-                        messageBox.style.opacity = "0";
-                        messageBox.style.display = "none";
-                    }, 2000);
-
-                    saveBtn.style.backgroundColor = "#79Af79";
-                    saveBtn.textContent = "Save";
-                    saveBtn.classList = "save-img-btn";
-                    overlay.style.display = "none";
                 }
-            });
-        }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
     });
-
-    function onPostedImgHover(img, overlay) {
-        img.style.filter = "brightness(80%)";
-        overlay.style.display = "flex";
-    }
-
-    function onPostedImgLeave(img, overlay) {
-        img.style.filter = "brightness(100%)";
-        overlay.style.display = "none";
-    }
 
 </script>
 </body>
