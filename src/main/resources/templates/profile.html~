@@ -40,9 +40,6 @@
                         <div class="actual-pfp-container">
                             <img class="actual-pfp" th:src="${user.profilePicture}" alt="Profile Picture">
                         </div>
-
-                        <div class="pfp-overlay"></div>
-
                     </div>
                     <p class="name-surname" th:text="${user.name + ' ' + user.surname}"></p>
                     <p class="username" th:text="'@' + ${user.username}"></p>
