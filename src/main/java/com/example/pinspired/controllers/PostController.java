@@ -78,7 +78,6 @@ public class PostController {
             return "redirect:/login";
         }
 
-        // Set userId for the post
         postDto.setUserId(user.getId());
         postDto.setCreatedAt(LocalDateTime.now());
         postDto.setModifiedAt(LocalDateTime.now());
@@ -123,7 +122,7 @@ public class PostController {
         List<PostDto> savedPosts = postService.getPostsByIds(user.getSavedPostIds());
         model.addAttribute("posts", savedPosts);
         model.addAttribute("pageName", "saved");
-        return "posts/index"; // Reuse your existing template
+        return "posts/index";
     }
 
 
@@ -135,7 +134,6 @@ public class PostController {
 
         userService.savePostForUser(userDto.getId(), postId);
 
-        // Refresh user session with updated data
         UserDto updatedUser = userService.getUserById(userDto.getId()); //Cannot resolve method 'getUserById' in 'UserService'
         request.getSession().setAttribute("user", updatedUser);
 
@@ -150,7 +148,6 @@ public class PostController {
 
         userService.unsavePostForUser(userDto.getId(), postId);
 
-        // Refresh user session with updated data
         UserDto updatedUser = userService.getUserById(userDto.getId()); // same things
         request.getSession().setAttribute("user", updatedUser);
 

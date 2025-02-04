@@ -129,14 +129,12 @@ public class LoginController {
 
     @PostMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
-        // Remove user from session
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
             System.out.println("Session invalidated during logout.");
         }
 
-        // Clear the cookie
         Cookie cookie = new Cookie("userId", "");
         cookie.setMaxAge(0);  // Expire the cookie
         cookie.setHttpOnly(true);
@@ -144,6 +142,6 @@ public class LoginController {
         cookie.setPath("/");
         response.addCookie(cookie);
 
-        return "redirect:/login";  // Redirect to login page after logout
+        return "redirect:/login";
     }
 }

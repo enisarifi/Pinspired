@@ -8,7 +8,6 @@ public class StartsWithValidator implements ConstraintValidator<StartsWith, Stri
     private String value;
     private boolean ignoreCase;
 
-    //initialize value from constraint
     @Override
     public void initialize(StartsWith constraintAnnotation) {
         this.value = constraintAnnotation.value();
@@ -19,7 +18,7 @@ public class StartsWithValidator implements ConstraintValidator<StartsWith, Stri
     @Override
     public boolean isValid(String prefix, ConstraintValidatorContext context) {
         if (prefix == null) {
-            return true; // Let other validators handle null values
+            return true;
         }
 
         return ignoreCase ? prefix.toLowerCase().startsWith(value.toLowerCase()) : prefix.startsWith(value);

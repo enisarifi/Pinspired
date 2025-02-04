@@ -31,22 +31,18 @@ public class FileHelper {
         return fileName;
     }
 
-    // 🌐 2️⃣ Save File from URL or Base64 String
     public static String saveFileFromUrl(String fileUrl) throws IOException {
         if (fileUrl == null || fileUrl.trim().isEmpty()) {
             throw new IllegalArgumentException("File URL cannot be empty");
         }
 
         if (fileUrl.startsWith("data:image/")) {
-            // Handle Base64-encoded image data
             return saveFileFromBase64(fileUrl);
         } else {
-            // Handle normal URL
             return saveFileFromNormalUrl(fileUrl);
         }
     }
 
-    // 🖼️ 3️⃣ Save File from Base64 String
     private static String saveFileFromBase64(String base64Image) throws IOException {
         String fileName = System.currentTimeMillis() + "_image.jpg";
         Path filePath = Paths.get(UPLOAD_DIR, fileName);
